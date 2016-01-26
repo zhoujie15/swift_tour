@@ -17,7 +17,7 @@ print("Hello, world!")
 这份教程会通过向你展示如何完成功能各异的编程任务，从而为你开始学习用Swift写程序提供充实的内容。如果你有什么不理解，请不要担心，这篇教程中介绍的所有内容都会在本书的其余部分提供更加详细的介绍。
 
 ```
-Note
+NOTE
 为了最好的学习体验，在Xcode中打开这章节内容的一个playground，它会让你能够编写代码同时立即看到执行结果。
 ```
 [下载Playground](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.playground.zip)
@@ -41,6 +41,22 @@ let implicitDouble = 70.0
 let explicitDouble: Double = 70
 ```
 
+```
+EXPERIMENT
+创建一个一个常量，拥有显式类型Float和初始值4。
+```
+声明的值并不会隐式地转换成其它类型，如果你需要将一个值转换成其它类型，显式地创建一个想要的类型的实例。
+
+```
+let label = "The width is"
+let width = 94
+let widthLabel = label + String(width)
+```
+
+```
+EXPERIMENT
+删除最后一行的String类型转换，你会得到什么样的错误？
+```
 
 
 
