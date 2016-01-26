@@ -21,3 +21,60 @@ Note
 为了最好的学习体验，在Xcode中打开这章节内容的一个playground，它会让你能够编写代码同时立即看到执行结果。
 ```
 [下载Playground](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.playground.zip)
+
+### Simple Values
+
+用let声明一个常量，用var声明一个变量。常量的值并不需要在编译时获知，但是你只能给它赋值一次。这意味着你可以用常量为一个特定的值命名，并且在很多其他地方使用。
+
+```
+var myVariable = 42
+myVariable = 50
+let myConstant = 42
+```
+常量或者变量必须和你想赋给它们的值拥有同样的类型。然而你并不需要显式地指定类型。在创建常量或者变量时提供给它们一个值，然后让编译器推断它的类型。在上面的例子中，编译器推断myVariable是一个整数因为它的初始值就是一个整型。
+
+如果初始值并没有提供充足的信息（或者没有初始值），你可以在变量之后写明它的类型，用一个冒号分隔。
+
+```
+let implicitInteger = 70
+let implicitDouble = 70.0
+let explicitDouble: Double = 70
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
