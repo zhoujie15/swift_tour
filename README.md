@@ -3,4 +3,4 @@
 
 Author: Jayz
 
-Blog: [清夏的荷塘](www.tsingxia.com)
+Blog: [清夏的荷塘](http://www.tsingxia.com)
