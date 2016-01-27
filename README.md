@@ -22,6 +22,8 @@ NOTE
 ```
 [下载Playground](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.playground.zip)
 
+----------------------------------------------
+
 ### Simple Values
 
 用let声明一个常量，用var声明一个变量。常量的值并不需要在编译时获知，但是你只能给它赋值一次。这意味着你可以用常量为一个特定的值命名，并且在很多其他地方使用。
@@ -91,7 +93,24 @@ shoppingList = []
 occupations = [:]
 ```
 
+----------------------------------------------
 
+### Control Flow
+
+使用if和switch做条件句，使用for-in，for，while和repeat－while做循环。条件和循环变量外是否有括号是可选的，条件或者循环体外的大括号是必要的。
+```
+let individualScores = [75, 43, 103, 87, 12]
+var teamScore = 0
+for score in individualScores{
+	if score > 50 {
+		teamScore += 3
+	} else{
+		teamScore += 1
+	}
+}
+print(teamScore)
+```
+在if语句中，选择条件必须是一个布尔表达式，这意味着像是```if score{...}```的代码会出错，而不会隐性地和0相比较。
 
 
 
