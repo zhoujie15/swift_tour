@@ -203,13 +203,116 @@ print(firstForLoop)
 ```
 用..<创造一个区间会忽视它的上界，用...创造的区间会包含上下界。
 
+----------------------------------------------
 
+### Functions and Closures
 
+使用func声明一个函数。通过引用函数名和用括号包裹起来的参数来使用函数。使用->把函数的返回值和参数生命分割开。
+```
+func greet(name: String, day: String) -> String{
+    return "Hello \(name), today is \(day)."
+}
+greet("Bob", day: "Tuesday")
+```
+```
+EXPERIMENT
+删除参数day。增加一个参数使得能在问候语中包括今天午餐的内容。
+```
+使用元组来得到一个复合的值——例如，从函数中返回多个值。元组中的这些元素可以通过名称或者标号访问到。
+```
+func calculateStatistics(scores: [Int])->(min: Int, max: Int, sum: Int){
+    var min = scores[0]
+    var max = scores[0]
+    var sum = 0
 
+    for score in scores{
+        if score > max{
+            max = score
+        } else if score < min{
+            min = score
+        } 
+        sum += score
+    }
 
-
-
-
+    return (min, max, sum)
+}
+let statistics = calculateStatistics([5, 3, 100, 3, 9])
+print(statistics.sum)
+print(statistics.2)
+```
+函数也可以传入可变个数的参数，把这些参数放置在一个数组内。
+```
+func sumOf(numbers: Int...) -> Int{
+    var sum = 0
+    for number in numbers{
+        sum += number
+    }
+    return sum
+}
+sumOf()
+sumOf(42, 597, 12)
+```
+```
+EXPERIMENT
+写一个计算参数平均值的函数。
+```
+函数可以被嵌套。嵌套中的函数可以获取外层函数的变量。你可以使用嵌套函数组织一个很长或者很复杂的函数中的代码。
+```
+func returnFifteen() -> Int {
+    var y = 10
+    func add(){
+        y += 5
+    }
+    add()
+    return y
+}
+returnFifteen()
+```
+函数也是一种类型。这意味着一个函数可以把另一个函数作为它的返回值。
+```
+func makeIncrementer() -> ((Int) -> Int) {
+    func addOne(number: Int) -> Int {
+        return 1 + number
+    }
+    return addOne
+}
+var increment = makeIncrementer()
+increment(7)
+```
+函数可以把另一个函数作为它的输入参数。
+```
+func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
+    for item in list{
+        if condition(item){
+            return true
+        }
+    }
+    return false
+}
+func lessThanTen(number: Int) -> Bool{
+    return number < 10
+}
+var numbers = [20, 19, 7, 12]
+hasAnyMatches(numbers, condition: lessThanTen)
+```
+函数实际上是一种特殊类型的闭包：之后会再次使用的代码块。闭包中的代码可以访问到创建闭包的域中的变量和函数，即使闭包在不同的域中被执行－你已经看到了一个这种例子在嵌套函数中。你可以写一个没有由大括号({})包围的函数名的闭包。使用in分开参数、返回值和函数体。
+```
+numbers.map({
+    (number: Int) -> Int in
+    let result = 3 * number
+    return result
+})
+```
+```
+EXPERIMENT
+重写闭包，对每一个偶数返回0。
+```
+你有几个选择可以把闭包写得更简洁。当闭包的类型已知，比如一个delegate（不知道怎么翻）的回调函数，你可以忽略参数的类型，返回值的类型或者都忽略。一条语句的闭包隐式地返回它们单一语句的值。
+```
+let mappedNumbers = numbers.map({number in 3 * number})
+print mappedNumbers
+```
+你可以使用数字代替名称来访问参数——这种方法在非常短的闭包中很有用。一个作为函数最后一个参数的闭包可以在圆括号后立即出现。当闭包是函数的唯一的参数，你可以完全忽略圆括号。
 
 
 
