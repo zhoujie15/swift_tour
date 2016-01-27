@@ -112,12 +112,96 @@ print(teamScore)
 ```
 在if语句中，选择条件必须是一个布尔表达式，这意味着像是```if score{...}```的代码会出错，而不会隐性地和0相比较。
 
+你可以同时使用if和let来处理那些可能丢失的值。这些值为可选内容。一个可选的值要么会有一个实际的值，要么是一个nil表示当前该值的缺失。在值的类型后面写一个问号(?)来表示当前的值是可选的。
 
+```
+var optionalString: String? = "Hello"
+print(optionalString == nil)
+ 
+var optionalName: String? = "John Appleseed"
+var greeting = "Hello!"
+if let name = optionalName {
+    greeting = "Hello, \(name)"
+}
+```
+```
+EXPERIMENT
+将optionalName的值变为nil。你会得到什么问候语？加一句else为optionalName为nil的情况设置一个不同的问候语。
+```
+如果可选的值为nil，那么条件选择会是false，大括号中的代码将会被跳过。否则，可选择的值会被去包裹并且在let语句中被赋给常量，这会让这种去包裹的值在下面的代码块中可用。
 
+另一种处理可选择的值的方法是使用??运算符提供一个默认值。如果可选的值丢失，那么会用默认值代替。
+```
+let nickName: String? = nil
+let fullName: String = "John Appleseed"
+let informalGreeting = "Hi \(nickName ?? fullName)"
+```
+Switch语句支持各种类型的数据和各种方式的比较操作，不会局限于整数并且会平等的被检测。
+```
+let vegetable = "red pepper"
+switch vegetable {
+case "celery":
+    print("Add some raisins and make ants on a log.")
+case "cucumber", "watercress":
+    print("That would make a good tea sandwich.")
+case let x where x.hasSuffix("pepper"):
+    print("Is it a spicy \(x)?")
+default:
+    print("Everything tastes good in soup.")
+}
+```
+```
+EXPERIMENT
+尝试去掉default部分，你会得到什么错误？
+```
+注意上面的let是如何使用的，它被用来把匹配一个固定模式的值赋给一个常量。
 
+在运行完一个匹配的case中的语句后，程序会从switch语句退出，不会运行到下一个case，所以不需要在每一个case的最后加上break语句。
 
-
-
+使用for-in语句提供一对变量名来迭代取出字典中的每个键值对。字典是无序的集合，所以它们的键和值在迭代中是随机顺序的。
+```
+let interestingNumbers = [
+    "Prime": [2, 3, 5, 7, 11, 13],
+    "Fibonacci": [1, 1, 2, 3, 5, 8],
+    "Square": [1, 4, 9, 16, 25],
+]
+var largest = 0
+for (kind, numbers) in interestingNumbers {
+    for number in numbers {
+        if number > largest {
+            largest = number
+        }
+    }
+}
+print(largest)
+```
+```
+EXPERIMENT
+使用另一个变量来记录哪种类型的数是最大的，同时记录最大的数是什么。
+```
+使用while重复运行一段代码直到某个条件改变。循环的条件也可以在循环体的末尾，确保循环被运行至少一遍。
+```
+var n = 2
+while n < 100 {
+    n = n * 2
+}
+print(n)
+ 
+var m = 2
+repeat {
+    m = m * 2
+} while m < 100
+print(m)
+```
+你可以通过使用..<在循环中制造一个区间的索引。
+```
+var firstForLoop = 0
+for i in 0..<4 {
+    firstForLoop += i
+}
+print(firstForLoop)
+```
+用..<创造一个区间会忽视它的上界，用...创造的区间会包含上下界。
 
 
 
