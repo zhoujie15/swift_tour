@@ -85,6 +85,11 @@ occupations["Jayne"] = "Public Relations"
 let emptyArray = [String]()
 let emptyDictionary = [String: Float]()
 ```
+如果类型信息能够被推断出来，你一个将一个空数组写成[]将一个空字典写成[:]。例如在当你为一个变量赋一个值或者给函数传递参数的时候。
+```
+shoppingList = []
+occupations = [:]
+```
 
 
 
