@@ -57,7 +57,34 @@ let widthLabel = label + String(width)
 EXPERIMENT
 删除最后一行的String类型转换，你会得到什么样的错误？
 ```
+有一种更简单地在字符串中使用数值的方法：将值写在括号中，在括号前写一个反斜线。例如：
+```
+let apples = 3
+let oranges = 5
+let appleSummary = "I have \(apples) apples."
+let fruitSummary = "I have \(apples + oranges) pieces of fruit."
+```
+```
+EXPERIMENT
+使用\()在字符串中包含一个浮点数计算以及在一句问候语中包含一个人的名字。
+```
+使用中括号([])创建列表和字典，通过写出它们的索引或者键值来访问它们的元素。允许在最后一个元素后面有一个逗号。
 
+```
+var shoppingList = ["catfish", "water", "tulips", "blue paint"]
+shoppingList[1] = "bottle of water"
+ 
+var occupations = [
+    "Malcolm": "Captain",
+    "Kaylee": "Mechanic",
+]
+occupations["Jayne"] = "Public Relations"
+```
+用初始化的语法创建一个空的数组或者字典。
+```
+let emptyArray = [String]()
+let emptyDictionary = [String: Float]()
+```
 
 
 
